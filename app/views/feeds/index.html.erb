@@ -1,0 +1,16 @@
+<h1>Feed Reader - no queueing</h1>
+
+<form action="/feeds" method="post" />
+	<div>
+		Add a feed:
+		<input type="text" size="60" name="url" />
+		<input type="submit" value="Add" />
+	</div>
+</form>
+
+<% @feeds.each do |feed| %>
+	<h3><%= feed.title %></h3>
+	<% feed.posts.each do |post| %>
+		<div><%= link_to post.title, post.url %></div>
+	<% end %>
+<% end %>
