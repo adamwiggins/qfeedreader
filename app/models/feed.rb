@@ -15,7 +15,7 @@ class Feed < ActiveRecord::Base
       self.updated_at = Time.now
       save!
 
-      feed.items.each do |item|
+      feed.items.slice(0, 3).each do |item|
         unless posts.find_by_url(item.link)
           posts.create! :title => item.title, :url => item.link
         end

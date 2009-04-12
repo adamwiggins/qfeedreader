@@ -5,17 +5,29 @@ class FeedsController < ActionController::Base
     @feeds = Feed.find(:all, :include => :posts)
   end
 
+  def show
+    @feed = Feed.find(params[:id])
+    if since = request.headers['If-Modified-Since']
+      if @feed.updated_at > Time.parse(since)
+        render :partial => 'feed', :locals => { :feed => @feed }
+      else
+        head 204, 'Cache-Control' => 'max-age=1'
+      end
+    end
+  end
+
   def create
     feed = Feed.create! :url => params[:url]
     redirect_to :action => :index
   end
 
   def refresh
-    if params[:id]
-      Feed.find(params[:id]).fetch
-    else
-      Feed.fetch_all
-    end
-    redirect_to :action => :index
+    Feed.find(params[:id]).fetch
+    head :ok
+  end
+
+  def refresh_all
+    Feed.fetch_all
+    head :ok
   end
 end

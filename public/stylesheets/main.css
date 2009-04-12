@@ -7,8 +7,19 @@
   font-weight: bold;
   padding-right: 2em;
 }
-.feed .header .last_updated,
-.feed .header .refresh {
+.feed .header .subtitle {
   font-size: 90%;
   color: #555;
+}
+
+.refreshing {
+  color: transparent;
+  background: url(/images/spinner.gif) no-repeat;
+}
+.refreshing a {
+  color: transparent;
+  border: 0;
+}
+.refreshing img {
+  outline: none;  /* disable mozilla's dotted box around link */
 }

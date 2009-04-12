@@ -1,0 +1,18 @@
+<div class="feed" id="feed_<%= feed.id %>">
+  <div class="header">
+    <div class="title"><%= feed.title %></div>
+    <div class="subtitle">
+      <span class="last_updated"><%= time_ago_in_words(feed.updated_at) %> ago | </span>
+      <span class="refresh">
+        <%= link_to_function "refresh", "refresh_feed(this)",
+                             :feed_id => feed.id, :last_modified => feed.updated_at %>
+      </span>
+    </div>
+  </div>
+
+  <div class="posts">
+    <% feed.posts.each do |post| %>
+      <div><%= link_to post.title, post.url %></div>
+    <% end %>
+  </div>
+</div>

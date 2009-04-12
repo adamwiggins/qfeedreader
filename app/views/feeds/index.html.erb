@@ -9,21 +9,9 @@
 </form>
 
 <% unless @feeds.empty? %>
-  <div class="refresh_all"><%= link_to "refresh all", :action => 'refresh' %></div>
+  <div class="refresh_all"><%= link_to_function "refresh all", 'refresh_all()' %></div>
 <% end %>
 
 <% @feeds.each do |feed| %>
-  <div class="feed">
-    <div class="header">
-      <div class="title"><%= feed.title %></div>
-      <span class="last_updated"><%= time_ago_in_words(feed.updated_at) %> ago</span>
-      <span class="refresh">| <%= link_to "refresh", :action => 'refresh', :id => feed.id %></span>
-    </div>
-
-    <div class="posts">
-      <% feed.posts.each do |post| %>
-        <div><%= link_to post.title, post.url %></div>
-      <% end %>
-    </div>
-  </div>
+  <%= render :partial => 'feed', :locals => { :feed => feed } %>
 <% end %>

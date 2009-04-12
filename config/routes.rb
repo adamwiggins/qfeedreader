@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resource :feeds
+  map.connect '/feeds/refresh_all', :controller => 'feeds', :action => 'refresh_all'
+  map.resources :feeds
 
   map.root :controller => 'feeds'
 
