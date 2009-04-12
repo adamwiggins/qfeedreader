@@ -1,16 +1,29 @@
 <h1>Feed Reader - no queueing</h1>
 
 <form action="/feeds" method="post" />
-	<div>
-		Add a feed:
-		<input type="text" size="60" name="url" />
-		<input type="submit" value="Add" />
-	</div>
+  <div>
+    Add a feed:
+    <input type="text" size="60" name="url" />
+    <input type="submit" value="Add" />
+  </div>
 </form>
 
+<% unless @feeds.empty? %>
+  <div class="refresh_all"><%= link_to "refresh all", :action => 'refresh' %></div>
+<% end %>
+
 <% @feeds.each do |feed| %>
-	<h3><%= feed.title %></h3>
-	<% feed.posts.each do |post| %>
-		<div><%= link_to post.title, post.url %></div>
-	<% end %>
+  <div class="feed">
+    <div class="header">
+      <div class="title"><%= feed.title %></div>
+      <span class="last_updated"><%= time_ago_in_words(feed.updated_at) %> ago</span>
+      <span class="refresh">| <%= link_to "refresh", :action => 'refresh', :id => feed.id %></span>
+    </div>
+
+    <div class="posts">
+      <% feed.posts.each do |post| %>
+        <div><%= link_to post.title, post.url %></div>
+      <% end %>
+    </div>
+  </div>
 <% end %>

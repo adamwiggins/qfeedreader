@@ -2,7 +2,6 @@ class CreateFeeds < ActiveRecord::Migration
   def self.up
     create_table :feeds do |t|
       t.string :url
-      t.string :title
       t.string :title, :default => '(pending)'
       t.timestamps
     end
@@ -11,6 +10,7 @@ class CreateFeeds < ActiveRecord::Migration
       t.integer :feed_id
       t.string :title
       t.string :url
+      t.timestamps
     end
   end
 

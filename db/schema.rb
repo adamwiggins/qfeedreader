@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(:version => 20090411033334) do
   end
 
   create_table "posts", :force => true do |t|
-    t.integer "feed_id"
-    t.string  "title"
-    t.string  "url"
+    t.integer  "feed_id"
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

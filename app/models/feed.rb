@@ -8,6 +8,7 @@ class Feed < ActiveRecord::Base
 
     transaction do
       self.title = feed.title
+      self.updated_at = Time.now
       save!
 
       feed.items.each do |item|
@@ -15,6 +16,12 @@ class Feed < ActiveRecord::Base
           posts.create! :title => item.title, :url => item.link
         end
       end
+    end
+  end
+
+  def self.fetch_all
+    all.each do |feed|
+      feed.fetch
     end
   end
 end

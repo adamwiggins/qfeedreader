@@ -1,0 +1,14 @@
+.feed .header {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+.feed .header .title {
+  font-size: 140%;
+  font-weight: bold;
+  padding-right: 2em;
+}
+.feed .header .last_updated,
+.feed .header .refresh {
+  font-size: 90%;
+  color: #555;
+}
