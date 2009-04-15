@@ -5,7 +5,7 @@
       <span class="last_updated"><%= time_ago_in_words(feed.updated_at) %> ago | </span>
       <span class="refresh">
         <%= link_to_function "refresh", "refresh_feed(this)",
-                             :feed_id => feed.id, :last_modified => feed.updated_at %>
+                             :feed_id => feed.id, :last_modified => feed.updated_at.httpdate %>
       </span>
     </div>
   </div>

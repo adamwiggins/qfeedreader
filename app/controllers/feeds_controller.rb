@@ -7,12 +7,11 @@ class FeedsController < ActionController::Base
 
   def show
     @feed = Feed.find(params[:id])
-    if since = request.headers['If-Modified-Since']
-      if @feed.updated_at > Time.parse(since)
-        render :partial => 'feed', :locals => { :feed => @feed }
-      else
-        head 204, 'Cache-Control' => 'max-age=1'
-      end
+
+    if stale?(:last_modified => @feed.updated_at)
+      render :partial => 'feed', :locals => { :feed => @feed }
+    else
+      response['Cache-Control'] = 'public, max-age=1'
     end
   end
 

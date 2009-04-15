@@ -21,8 +21,8 @@ function poll_for_update(feed_id, last_modified, link) {
       method: 'get',
       requestHeaders: { 'If-Modified-Since': last_modified },
       onComplete: function(transport) {
-        if (transport.status == 204) {
-          poll_for_update(feed_id, last_modified, link)
+        if (transport.status == 304) {
+          poll_for_update(feed_id, last_modified, link);
         } else if (transport.status == 200) {
           $('feed_' + feed_id).innerHTML = transport.responseText
         } else {
