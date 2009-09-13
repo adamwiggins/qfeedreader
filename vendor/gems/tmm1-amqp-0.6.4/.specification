@@ -1,0 +1,122 @@
+--- !ruby/object:Gem::Specification 
+name: tmm1-amqp
+version: !ruby/object:Gem::Version 
+  version: 0.6.4
+platform: ruby
+authors: 
+- Aman Gupta
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-01-09 00:00:00 -08:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: eventmachine
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 0.12.4
+    version: 
+description: AMQP client implementation in Ruby/EventMachine
+email: amqp@tmm1.net
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- README
+- doc/EXAMPLE_01_PINGPONG
+- doc/EXAMPLE_02_CLOCK
+- doc/EXAMPLE_03_STOCKS
+- doc/EXAMPLE_04_MULTICLOCK
+- doc/EXAMPLE_05_ACK
+- doc/EXAMPLE_05_POP
+- doc/EXAMPLE_06_HASHTABLE
+files: 
+- README
+- Rakefile
+- amqp.gemspec
+- amqp.todo
+- doc/EXAMPLE_01_PINGPONG
+- doc/EXAMPLE_02_CLOCK
+- doc/EXAMPLE_03_STOCKS
+- doc/EXAMPLE_04_MULTICLOCK
+- doc/EXAMPLE_05_ACK
+- doc/EXAMPLE_05_POP
+- doc/EXAMPLE_06_HASHTABLE
+- examples/amqp/simple.rb
+- examples/mq/ack.rb
+- examples/mq/clock.rb
+- examples/mq/pop.rb
+- examples/mq/hashtable.rb
+- examples/mq/internal.rb
+- examples/mq/logger.rb
+- examples/mq/multiclock.rb
+- examples/mq/pingpong.rb
+- examples/mq/primes-simple.rb
+- examples/mq/primes.rb
+- examples/mq/stocks.rb
+- lib/amqp.rb
+- lib/amqp/buffer.rb
+- lib/amqp/client.rb
+- lib/amqp/frame.rb
+- lib/amqp/protocol.rb
+- lib/amqp/server.rb
+- lib/amqp/spec.rb
+- lib/ext/blankslate.rb
+- lib/ext/em.rb
+- lib/ext/emfork.rb
+- lib/mq.rb
+- lib/mq/exchange.rb
+- lib/mq/header.rb
+- lib/mq/logger.rb
+- lib/mq/queue.rb
+- lib/mq/rpc.rb
+- old/README
+- old/Rakefile
+- old/amqp-0.8.json
+- old/amqp_spec.rb
+- old/amqpc.rb
+- old/codegen.rb
+- protocol/amqp-0.8.json
+- protocol/amqp-0.8.xml
+- protocol/codegen.rb
+- protocol/doc.txt
+- research/api.rb
+- research/primes-forked.rb
+- research/primes-processes.rb
+- research/primes-threaded.rb
+has_rdoc: true
+homepage: http://amqp.rubyforge.org/
+post_install_message: 
+rdoc_options: 
+- --include=examples
+require_paths: 
+- bin
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.1
+signing_key: 
+specification_version: 2
+summary: AMQP client implementation in Ruby/EventMachine
+test_files: []
+
