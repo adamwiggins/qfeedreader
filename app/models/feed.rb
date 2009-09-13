@@ -3,8 +3,12 @@ class Feed < ActiveRecord::Base
 
   after_create :fetch
 
+  def self.enqueue(url)
+    Minion.enqueue('feed.fetch', :url => url)
+  end
+
   def fetch
-    Delayed::Job.enqueue self
+    self.class.enqueue(url)
   end
 
   def perform
@@ -27,5 +31,9 @@ class Feed < ActiveRecord::Base
     all.each do |feed|
       feed.fetch
     end
+  end
+
+  def self.find_or_new(url)
+    find_by_url(url) || Feed.new(:url => url)
   end
 end

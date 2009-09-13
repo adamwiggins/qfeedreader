@@ -16,7 +16,7 @@ class FeedsController < ActionController::Base
   end
 
   def create
-    feed = Feed.create! :url => params[:url]
+    Feed.enqueue(params[:url])
     redirect_to :action => :index
   end
 
