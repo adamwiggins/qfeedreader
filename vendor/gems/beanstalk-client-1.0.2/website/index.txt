@@ -1,0 +1,79 @@
+h1. Beanstalk Client
+
+h1. &#x2192; 'beanstalk-client'
+
+
+h2. What
+
+This is a Ruby client library for the Beanstalk protocol.
+
+"<tt>beanstalkd</tt>":http://xph.us/software/beanstalkd/ is a fast,
+distributed, in-memory work-queue service. Its interface is generic, but is
+intended for use in reducing the latency of page views in high-volume web
+applications by running most time-consuming tasks asynchronously.
+
+h2. Installing
+
+<p>First you must download and install the 
+"<tt>beanstalkd</tt>":http://xph.us/software/beanstalkd/ server.</p>
+
+<p>Then just:</p>
+
+<pre syntax="sh">sudo gem install beanstalk-client</pre>
+
+<p>and you're ready to go!</p>
+
+h2. How to use it
+
+Here's an example of the low-level Ruby interface.
+
+First, have one process put a job into the queue:
+
+<pre syntax="ruby">
+beanstalk = Beanstalk::Pool.new(['localhost:11300'])
+...
+beanstalk.put('hello')
+</pre>
+
+Then start another process to take jobs out of the queue and run them:
+
+<pre syntax="ruby">
+beanstalk = Beanstalk::Pool.new(['localhost:11300'])
+loop do
+  job = beanstalk.reserve
+  puts job.body # prints "hello"
+  job.delete
+end
+</pre>
+
+h2. Rails Integration
+
+But you very likely want to use this in a Rails project. In that case, you
+should check out the <a href=http://async-observer.rubyforge.org/>Async
+Observer Rails plugin</a>. It gives far more functionality and a
+super-easy-to-use interface.
+
+h2. Forum
+
+There's a google group called
+"beanstalk-talk":http://groups.google.com/group/beanstalk-talk for all
+discussion regarding <tt>beanstalkd</tt> and the various client libraries.
+
+h2. How to submit patches
+
+Read the "8 steps for fixing other people's code":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/ and for section "8b: Submit patch to Google Groups":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups, use the Google Group above.
+
+The repository is <code>http://xph.us/src/beanstalk-client-ruby.git</code> for anonymous access.
+
+You can browse the repo at
+"http://xph.us/git/beanstalk-client-ruby/":http://xph.us/git/beanstalk-client-ruby/.
+
+h2. License
+
+You can share this code under the terms of the GPL version 3. 
+
+h2. Contact
+
+Comments are welcome. Send any questions or comments to the
+"beanstalk-talk":http://groups.google.com/group/beanstalk-talk google group.
+

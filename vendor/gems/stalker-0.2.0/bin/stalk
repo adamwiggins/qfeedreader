@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require File.dirname(__FILE__) + '/../lib/stalker'
+
+usage = "stalk <jobs.rb> [<job>[,<job>,..]]"
+file = ARGV.shift or abort usage
+jobs = ARGV.shift.split(',') rescue nil
+
+require file
+
+trap('INT') do
+	puts "\rExiting"
+	exit
+end
+
+Stalker.work jobs

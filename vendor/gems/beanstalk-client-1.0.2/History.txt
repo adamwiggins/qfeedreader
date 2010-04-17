@@ -1,0 +1,57 @@
+== 1.0.2 2008-06-18
+
+* Support reserve-with-timeout on pools. (Dustin Sallings)
+
+== 1.0.1 (never released)
+
+* Fix bug preventing jobs from being deleted.
+* Remove an extraneous message. (Dustin Sallings)
+* Fix the github gemspec so beanstalk-client builds. (Isaac Feliu)
+* Support the new reserve-with-timeout command in dev beanstalkd.
+  (Dustin Sallings)
+
+== 1.0.0 2008-05-29
+
+* Preserve the watch list when a Pool instance reconnects.
+* Allow user to get the cached list of tubes watched for a Pool.
+* Allow user to specify a default tube for all connections. (Dustin Sallings)
+* Added a gemspec for github. (Dustin Sallings)
+* More exception classes, including one for each server error response.
+
+== 0.11.0 2008-04-17
+
+* Fix an infinite loop bug when the server goes away.
+
+== 0.10.0 2008-04-11
+
+* Some optimizations to avoid sending unnecessary use and watch commands.
+* Use newer protocol features to open only one connection per server address.
+* More consistent and complete peek methods.
+* Various bug fixes.
+
+== 0.9.0 2008-02-27
+
+* Skipping 0.8.x; beanstalkd 0.8 was a botched release.
+* Protocol updates, support for all new commands and changes to existing
+  commands.
+* Bugfix: don't add stats values that aren't aggregations already.
+
+== 0.7.0 2008-02-01
+
+* Add a close method to connections and pools.
+* Add a last_server method to identify the last connection used.
+
+== 0.6.1 2008-01-22
+
+* More useful behavior when we lose the connection or the server is in drain
+  mode.
+
+== 0.6.0 2008-01-04
+
+* Protocol updates. Works with beanstalkd 0.6.
+* Some bugfixes and better robustness.
+* Convenience methods for accessing YAML job hash elements.
+
+== 0.1 2007-12-12
+
+* Initial release

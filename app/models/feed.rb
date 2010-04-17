@@ -4,7 +4,7 @@ class Feed < ActiveRecord::Base
   after_create :fetch
 
   def self.enqueue(url)
-    Minion.enqueue('feed.fetch', :url => url)
+    Stalker.enqueue('feed.fetch', :url => url)
   end
 
   def fetch
